@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
-    "start": "next start",
+    "start": "cd apps/demo-nextjs && npx next start",
     "lint": "turbo lint"
   },
   "devDependencies": {
