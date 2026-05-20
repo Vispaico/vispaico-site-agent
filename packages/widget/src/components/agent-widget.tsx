@@ -65,7 +65,13 @@ export function AgentWidget({
         setMessages((prev) => [...prev, assistantMsg]);
       } catch (err) {
         if (err instanceof DOMException && err.name === 'AbortError') return;
-        setError(err instanceof Error ? err.message : 'Something went wrong');
+        const rawMessage = err instanceof Error ? err.message : 'Something went wrong';
+        // Replace cryptic fetch errors with a user-friendly message
+        const friendlyMessage =
+          rawMessage === 'Failed to fetch' || err instanceof TypeError
+            ? 'Could not reach the agent API. Check API URL or CORS configuration.'
+            : rawMessage;
+        setError(friendlyMessage);
       } finally {
         setLoading(false);
       }
