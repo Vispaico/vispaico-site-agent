@@ -12,10 +12,6 @@ export function DemoAgentWidget() {
   const apiBaseUrl = process.env.NEXT_PUBLIC_AGENT_API_BASE_URL || '';
   const workspaceId = process.env.NEXT_PUBLIC_VISPAICO_WORKSPACE_ID || '';
 
-  if (!apiBaseUrl || !workspaceId) {
-    return null;
-  }
-
   return (
     <AgentWidget
       apiBaseUrl={apiBaseUrl}
